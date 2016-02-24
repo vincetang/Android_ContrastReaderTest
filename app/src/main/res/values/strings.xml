@@ -11,7 +11,7 @@
     <string name="text_3">Unsinkable Ship</string>
     <string name="text_4">Erosion in America</string>
 
-    <string name="contrast_on">Contrast Mode On</string>
+    <string name="contrast_on">Contrast Mode On </string>
     <string name="contrast_off">Contrast Mode Off</string>
     <string name="choose_passage">Choose a text passage</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>

@@ -12,14 +12,24 @@
     tools:context="com.vincetang.contrastreader.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/settings_title"
+        android:id="@+id/txtSettings"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/contrast_off"
         android:id="@+id/modeSwitch"
         android:checked="false"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/txtSettings"
         android:layout_alignParentStart="true" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,14 +41,11 @@
         android:layout_below="@+id/modeSwitch"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/settings_title"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <View android:id="@+id/fakeView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/textView"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -46,8 +53,8 @@
         android:text="@string/text_1"
         android:id="@+id/btnText1"
         android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/btnText3"
-        android:layout_alignEnd="@+id/modeSwitch" />
+        android:layout_alignEnd="@+id/fakeView"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -55,21 +62,25 @@
         android:text="@string/text_2"
         android:id="@+id/btnText2"
         android:layout_below="@+id/textView"
-        android:layout_alignEnd="@+id/btnText4"
-        android:layout_toEndOf="@+id/btnText1" />
+        android:layout_alignStart="@+id/fakeView"
+        android:layout_alignParentEnd="true"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_3"
         android:id="@+id/btnText3"
-        android:layout_below="@+id/btnText2"
-        android:layout_alignEnd="@+id/modeSwitch" />
+        android:layout_below="@+id/btnText1"
+        android:layout_alignEnd="@+id/fakeView"
+        android:layout_alignParentStart="true"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_4"
         android:id="@+id/btnText4"
-        android:layout_alignTop="@+id/btnText3"
-        android:layout_toEndOf="@+id/btnText3" />
+        android:layout_centerVertical="true"
+        android:layout_below="@id/btnText2"
+        android:layout_alignStart="@+id/fakeView"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
