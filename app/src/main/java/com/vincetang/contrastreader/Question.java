@@ -11,8 +11,8 @@ public class Question {
     public ArrayList<String> answers;
     public String correctAnswer;
 
-    public Question(String title, String question, ArrayList<String> answers, String correctAnswer) {
-        this.title = title;
+    public Question(String number, String question, ArrayList<String> answers, String correctAnswer) {
+        this.title = number;
         this.question = question;
         this.answers = answers;
         this.correctAnswer = correctAnswer;

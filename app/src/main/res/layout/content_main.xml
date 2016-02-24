@@ -15,7 +15,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contrast Mode Off"
+        android:text="@string/contrast_off"
         android:id="@+id/modeSwitch"
         android:checked="false"
         android:layout_below="@+id/textView2"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Choose a text passage"
+        android:text="@string/choose_passage"
         android:id="@+id/textView"
         android:layout_marginTop="97dp"
         android:layout_below="@+id/modeSwitch"

@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Switch;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -27,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Switch modeSwitch;
     private Button btnText1, btnText2, btnText3, btnText4;
-    private ArrayList<Passage> passages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnText3.setOnClickListener(this);
         btnText4.setOnClickListener(this);
 
-        // read JSON
-        StringBuilder rawJSON = readJSONFile();
-        
     }
 
     @Override
@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.modeSwitch:
                 if (modeSwitch.isChecked())
-                    modeSwitch.setText("Contrast Mode On");
+                    modeSwitch.setText(R.string.contrast_on);
                 else
-                    modeSwitch.setText("Contrast Mode Off");
+                    modeSwitch.setText(R.string.contrast_off);
                 break;
             case R.id.btnText1:
                 loadTextActivity((String) btnText1.getText());
@@ -107,33 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private StringBuilder readJSONFile() {
-        // Read the json file for the text with the given title
-        InputStream is = getResources().openRawResource(R.raw.data);
-        InputStreamReader isr = new InputStreamReader(is);
-
-        int charRead;
-        char[] inputBuffer = new char[500];
-        StringBuilder sb = new StringBuilder();
-
-        try {
-            while (( charRead = isr.read(inputBuffer)) != -1) { // -1 indicates end of stream
-                sb.append(String.copyValueOf(inputBuffer, 0, charRead));
-            }
-            Log.d("ParseJSON", "JSON read complete: " + sb);
-        } catch (IOException e) {
-            Log.d("ParseJSON", "IO Exception reading json: " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-
-        return sb;
-    }
-
     private void loadTextActivity(String title) {
-
         Intent intent = new Intent(MainActivity.this, TextActivity.class);
-        intent.putExtra("data", title);
+        intent.putExtra("title", title);
 
         startActivity(intent);
     }
