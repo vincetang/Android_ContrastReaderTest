@@ -1,0 +1,151 @@
+//http://www.grammarbank.com/short-reading-comprehension-passages.html
+// Note questions 1 and 2 are reversed
+
+{
+	"passages": [
+	{
+		"title": "Dolphins",
+		"text": "Dolphins are regarded as the friendliest creatures in the sea and stories of them helping drowning sailors have been common since Roman times. The more we learn about dolphins, the more we realize that their society is more complex than people previously imagined. They look after other dolphins when they are ill, care for pregnant mothers and protect the weakest in the community, as we do. Some scientists have suggested that dolphins have a language but it is much more probable that they communicate with each other without needing words. Could any of these mammals be more intelligent than man? Certainly the most common argument in favor of man's superiority over them that we can kill them more easily than they can kill us is the least satisfactory. On the contrary, the more we discover about these remarkable creatures, the less we appear superior when we destroy them.",
+		"questions": [
+		{
+			"title": "Question 1 of 3",
+			"question": "It is clear from the passage that dolphins ----",
+			"answers": ["A) don't want to be with us as much as we want to be with them",
+						"B) are proven to be less intelligent than once thought",
+						"C) have a reputation for being friendly to humans",
+						"D) are the most powerful creatures that live in the oceans",
+						"E) are capable of learning a language and communicating with humans"],
+			"correct_answer": "C) have a reputation for being friendly to humans"
+		},
+		{
+			"title": "Question 2 of 3",
+			"question": "The fact that the writer of the passage thinks that we can kill dolphins more easily than they can kill us ----",
+			"answers": ["A) means that they are better adapted to their environment than we are",
+						"B) shows that dolphins have a very sophisticated form of communication",
+						"C) proves that dolphins are not the most intelligent species at sea",
+						"D) does not mean that we are superior to them",
+						"E) proves that Dolphins have linguistic skills far beyond what we previously thought"],
+			"correct_answer": "D) does not mean that we are superior to them"
+		},
+		{
+			"title": "Question 3 of 3",
+			"question": "One can infer from the reading that ----",
+			"answers": ["A) dolphins are quite abundant in some areas of the world",
+						"B) communication is the most fascinating aspect of the dolphins",
+						"C) dolphins have skills that no other living creatures have such as the ability to think",
+						"D) it is not usual for dolphins to communicate with each other",
+						"E) dolphins have some social traits that are similar to those of humans"],
+			"correct_answer": "E) dolphins have some social traits that are similar to those of humans"
+		}
+		]
+	},
+	{
+		"title": "Opera",
+		"text": "Opera refers to a dramatic art form, originating in Europe, in which the emotional content is conveyed to the audience as much through music, both vocal and instrumental, as it is through the lyrics. By contrast, in musical theater an actor's dramatic performance is primary, and the music plays a lesser role. The drama in opera is presented using the primary elements of theater such as scenery, costumes, and acting. However, the words of the opera, or libretto, are sung rather than spoken. The singers are accompanied by a musical ensemble ranging from a small instrumental ensemble to a full symphonic orchestra.",
+		"questions": [
+		{
+			"title": "Question 1 of 3",
+			"question": "It is pointed out in the reading that opera ----",
+			"answers": ["A) has developed under the influence of musical theater",
+			 			"B) is a drama sung with the accompaniment of an orchestra", 
+						"C) is not a high-budget production",
+						"D) is often performed in Europe",
+						"E) is the most complex of all the performing arts"],
+			"correct_answer": "B) is a drama sung with the accompaniment of an orchestra"
+		},
+		{
+			"title": "Question 2 of 3",
+			"question": "We can understand from the reading that ----",
+			"answers": ["A) people are captivated more by opera than musical theater",
+						"B) drama in opera is more important than the music",
+						"C) orchestras in operas can vary considerably in size",
+						"D) musical theater relies above all on music",
+						"E) there is argument over whether the music is important or the words in opera"],
+			"correct_answer": "C) orchestras in operas can vary considerably in size"
+		},
+		{
+			"title": "Question 3 of 3",
+			"question": "It is stated in the reading that ----",
+			"answers": ["A) acting and costumes are secondary to music in musical theater",
+						"B) many people find musical theater more captivating than opera",
+						"C) music in musical theater is not as important as it is in opera",
+						"D) an opera requires a huge orchestra as well as a large choir",
+						"E) opera doesn't have any properties in common with musical theater"],
+			"correct_answer": "C) music in musical theater is not as important as it is in opera"
+		}
+		]
+	},
+	{
+		"title": "Unsinkable Ship",
+		"text": "Naval architects never claim that a ship is unsinkable, but the sinking of the passenger-and-car ferry Estonia in the Baltic surely should have never have happened. It was well designed and carefully maintained. It carried the proper number of lifeboats. It had been thoroughly inspected the day of its fatal voyage. Yet hours later, the Estonia rolled over and sank in a cold, stormy night. It went down so quickly that most of those on board, caught in their dark, flooding cabins, had no chance to save themselves: Of those who managed to scramble overboard, only 139 survived. The rest died of hypothermia before the rescuers could pluck them from the cold sea. The final death toll amounted to 912 souls. However, there were an unpleasant number of questions about why the Estonia sank and why so many survivors were men in the prime of life, while most of the dead were women, children and the elderly.",
+		"questions": [
+		{
+			"title": "Question 1 of 3",
+			"question": "One can understand from the reading that ----",
+			"answers": ["A) the lifesaving equipment did not work well and lifeboats could not be lowered",
+						"B) design faults and incompetent crew contributed to the sinking of the Estonia ferry",
+						"C) 139 people managed to leave the vessel but died in freezing water",
+						"D) naval architects claimed that the Estonia was unsinkable",
+						"E) most victims were trapped inside the boat as they were in their cabins"],
+			"correct_answer": "E) most victims were trapped inside the boat as they were in their cabins"
+		},
+		{
+			"title": "Question 2 of 3",
+			"question": "It is clear from the passage that the survivors of the accident ----",
+			"answers": ["A) helped one another to overcome the tragedy that had affected them all",
+						"B) were mostly young men but women, children and the elderly stood little chance",
+						"C) helped save hundreds of lives",
+						"D) are still suffering from severe post-traumatic stress disorder",
+						"E) told the investigators nothing about the accident"],
+			"correct_answer": "B) were mostly young men but women, children and the elderly stood little chance"
+		},
+		{
+			"title": "Question 3 of 3",
+			"question": "According to the passage, when the Estonia sank, ----",
+			"answers": ["A) there were only 139 passengers on board",
+						"B) few of the passengers were asleep",
+						"C) there were enough lifeboats for the number of people on board",
+						"D) faster reaction by the crew could have increased the Estonia's chances of survival",
+						"E) all the passengers had already moved out into the open decks"],
+			"correct_answer": "C) there were enough lifeboats for the number of people on board"
+		}
+		]
+	},
+	{
+		"title": "Erosion in America",
+		"text": "Erosion of America's farmland by wind and water has been a problem since settlers first put the prairies and grasslands under the plow in the nineteenth century. By the 1930s, more than 282 million acres of farmland were damaged by erosion. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by heavy crop production. In the years ahead, soil erosion and the pollution problems it causes are likely to replace petroleum scarcity as the nation's most critical natural resource problem.",
+		"questions": [
+		{
+			"title": "Question 1 of 3",
+			"question": "As we understand from the reading, today, soil erosion in America ----",
+			"answers": ["A) causes humans to place new demands on the land",
+						"B) is worse than it was in the nineteenth century",
+						"C) happens so slowly that it is hardly noticed",
+						"D) is the most critical problem that the nation faces",
+						"E) is worse in areas which have a lot of petroleum production"],
+			"correct_answer": "B) is worse than it was in the nineteenth century"
+		},
+		{
+			"title": "Question 2 of 3",
+			"question": "The author points out in the passage that erosion in America ----",
+			"answers": ["A) has damaged 282 million acres ever since settlers first put the prairies and grasslands under the plow",
+						"B) has been so severe that it has forced people to abandon their settlements",
+						"C) occurs only in areas with no vegetation",
+						"D) can become a more serious problem in the future",
+						"E) was on the decline before 1930s"],
+			"correct_answer": "D) can become a more serious problem in the future"
+		},
+		{
+			"title": "Question 3 of 3",
+			"question": "It is pointed out in the reading that in America ----",
+			"answers": ["A) petroleum is causing heavy soil erosion and pollution problems",
+						"B) heavy crop production is necessary to meet the demands and to prevent a disaster",
+						"C) soil erosion has been hastened due to the overuse of farming lands",
+						"D) water is undoubtedly the largest cause of erosion",
+						"E) there are many ways to reduce erosion"],
+			"correct_answer": "C) soil erosion has been hastened due to the overuse of farming lands"
+		}
+		]
+	}
+	]
+}
