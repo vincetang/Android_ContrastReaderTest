@@ -4,6 +4,10 @@
     <string name="settings_title">Settings</string>
 
     <!-- Text passage titles -->
-    <string name="text_1">Text 1</string>
     <string name="title_activity_text">TextActivity</string>
+
+    <string name="text_1">Dolphins</string>
+    <string name="text_2">Opera</string>
+    <string name="text_3">Unsinkable Ship</string>
+    <string name="text_4">Erosion in America</string>
 </resources>
