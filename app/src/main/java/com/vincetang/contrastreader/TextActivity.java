@@ -1,5 +1,6 @@
 package com.vincetang.contrastreader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +23,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class TextActivity extends AppCompatActivity {
+public class TextActivity extends AppCompatActivity implements View.OnClickListener {
 
     public TextView txtData;
-    private ArrayList<Passage> passageList;
     private String rawJSON;
     public JSONArray passages;
+    private Button btnDone;
 
     //JSON Node names
     private static final String TAG_PASSAGES = "passages";
@@ -43,6 +46,11 @@ public class TextActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        btnDone = (Button) findViewById(R.id.btnDone);
+        btnDone.setOnClickListener(this);
 
         txtData = (TextView) findViewById(R.id.txtData);
         txtData.setMovementMethod(new ScrollingMovementMethod());
@@ -51,19 +59,29 @@ public class TextActivity extends AppCompatActivity {
 
         if (extras != null) {
             String title = extras.getString("title");
-            txtData.setText(title);
-
+            getSupportActionBar().setTitle(title);
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
-            txtData.setText(passage.text);
+            if (passage != null)
+                txtData.setText(passage.text);
 
         } else {
-            Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG);
-            return;
+            Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
         }
-
-
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent upIntent = new Intent(this, MainActivity.class);
+                startActivity(upIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private String readJSONFile() {
         // Read the json file for the text with the given title
         InputStream is = getResources().openRawResource(R.raw.data);
@@ -93,7 +111,7 @@ public class TextActivity extends AppCompatActivity {
             try {
                 JSONObject jsonRootObject = new JSONObject(rawJSON);
                 passages = jsonRootObject.getJSONArray(TAG_PASSAGES);
-                passageList = new ArrayList<Passage>();
+
 
                 // iterate over passages
                 for (int i = 0; i < passages.length(); i++) {
@@ -128,8 +146,7 @@ public class TextActivity extends AppCompatActivity {
                             passage_questions.add(questionObject);
 
                         }
-                        Passage newPassage = new Passage(title, text, passage_questions);
-                        return newPassage;
+                        return new Passage(title, text, passage_questions);
                     }
                 }
             } catch (JSONException e) {
@@ -138,5 +155,21 @@ public class TextActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnDone:
+                //Load the quiz
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -1,11 +1,14 @@
 package com.vincetang.contrastreader;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by Vince on 16-02-23.
  */
-public class Question {
+public class Question implements Parcelable {
     public String title;
     public String question;
     public ArrayList<String> answers;
@@ -49,4 +52,54 @@ public class Question {
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
+
+
+    protected Question(Parcel in) {
+        title = in.readString();
+        question = in.readString();
+        in.readStringList(answers);
+        correctAnswer = in.readString();
+    }
+    /**
+     * Describe the kinds of special objects contained in this Parcelable's
+     * marshalled representation.
+     *
+     * @return a bitmask indicating the set of special object types marshalled
+     * by the Parcelable.
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Flatten this object in to a Parcel.
+     *
+     * @param dest  The Parcel in which the object should be written.
+     * @param flags Additional flags about how the object should be written.
+     *              May be 0 or {@link #PARCELABLE_WRITE_RETURN_VALUE}.
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(question);
+        dest.writeStringList(answers);
+        dest.writeString(correctAnswer);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
+
+
+
 }

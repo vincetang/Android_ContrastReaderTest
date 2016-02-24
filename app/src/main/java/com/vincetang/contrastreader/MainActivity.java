@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnText4:
                 loadTextActivity((String) btnText4.getText());
                 break;
+            default:
+                break;
         }
     }
 
