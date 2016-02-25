@@ -32,6 +32,8 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public JSONArray passages;
     private Button btnDone;
 
+    //TODO create timer
+
     //JSON Node names
     private static final String TAG_PASSAGES = "passages";
     private static final String TAG_TITLE = "title";
@@ -65,13 +67,14 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
             if (passage != null)
+                //TODO rich test and plain text
                 txtData.setText(passage.text);
 
         } else {
             Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
         }
 
-        // Dialog box to start timer and let user start
+        // Dialog box to start timer and let user begin
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_media_play)
                 .setTitle("Start reading")
@@ -182,7 +185,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDone:
-                //Load the quiz
+                //TODO load the quiz and stop timer
                 break;
             default:
                 break;

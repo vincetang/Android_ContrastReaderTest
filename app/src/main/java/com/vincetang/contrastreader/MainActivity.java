@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (modeSwitch.isChecked())
                     modeSwitch.setText(R.string.contrast_on);
                 else
+                    //TODO set rich or plain text setting
                     modeSwitch.setText(R.string.contrast_off);
                 break;
             case R.id.btnText1:
