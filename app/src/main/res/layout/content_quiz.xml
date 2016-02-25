@@ -12,4 +12,96 @@
     tools:context="com.vincetang.contrastreader.QuizActivity"
     tools:showIn="@layout/activity_quiz">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 1 of 3"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="22dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="It is clear from the passage that dolphins ----"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A) don&apos;t want to be with us as much as we want to be with them"
+        android:id="@+id/radioButton"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:checked="false"
+        android:textSize="18dp"
+        android:paddingBottom="10dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B) are proven to be less intelligent than once thought"
+        android:id="@+id/radioButton2"
+        android:layout_below="@+id/radioButton"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textSize="18dp"
+        android:paddingBottom="10dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C) have a reputation for being friendly to humans"
+        android:id="@+id/radioButton3"
+        android:layout_below="@+id/radioButton2"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textSize="18dp"
+        android:paddingBottom="10dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D) are the most powerful creatures that live in the oceans"
+        android:id="@+id/radioButton4"
+        android:layout_below="@+id/radioButton3"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textSize="18dp"
+        android:paddingBottom="10dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E) are capable of learning a language and communicating with humans"
+        android:id="@+id/radioButton5"
+        android:layout_below="@+id/radioButton4"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textSize="18dp"
+        android:paddingBottom="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skip"
+        android:id="@+id/button"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/radioButton5"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button"
+        android:layout_toStartOf="@+id/button" />
 </RelativeLayout>

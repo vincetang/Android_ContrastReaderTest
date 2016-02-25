@@ -1,5 +1,7 @@
 package com.vincetang.contrastreader;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -68,6 +70,20 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
         }
+
+        // Dialog box to start timer and let user start
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_media_play)
+                .setTitle("Start reading")
+                .setMessage("Press Start when you're ready to begin reading")
+                .setPositiveButton("Start", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO start timer here
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     @Override
