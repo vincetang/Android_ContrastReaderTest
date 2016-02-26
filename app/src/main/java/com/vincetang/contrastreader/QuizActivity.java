@@ -2,6 +2,7 @@ package com.vincetang.contrastreader;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +27,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private int questionIndex;
     private int numQuestions;
+    private int level;
+    private String title;
+
     public Button btnSubmit;
     public Button btnSkip;
 
@@ -35,7 +39,6 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Quiz");
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSkip = (Button) findViewById(R.id.btnSkip);
@@ -53,6 +56,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         user_score = 0;
         questionIndex = 0;
+
+        Bundle extra = getIntent().getExtras();
+        level = extra.getInt("level");
+        title = extra.getString("title");
+        getSupportActionBar().setTitle(title + " Quiz");
 
         showNextQuestion();
     }
@@ -92,7 +100,31 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void completeQuiz() {
-        Toast.makeText(this,"Quiz completed.\n\nYour score is : " + user_score, Toast.LENGTH_LONG).show();
+        if (level < 2) {
+        level++;
+
+        //TODO load uncontrasted or contrasted version depending on what was read
+        Intent intent = new Intent(QuizActivity.this, TextActivity.class);
+        intent.putExtra("title", "Opera");
+        intent.putExtra("level", level);
+        startActivity(intent);
+        } else {
+            //TODO write out results
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Thank you!")
+                    .setMessage("You have completed the experiment.\n\nPlease return this device " +
+                            "to the experimenter.\n\n Thank you for your participation!")
+                    .setCancelable(false)
+                    .setPositiveButton("Finish", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent homeIntent = new Intent(QuizActivity.this, MainActivity.class);
+                            startActivity(homeIntent);
+                        }
+                    }).show();
+            Toast.makeText(this, "Complete!\n User Score: " + user_score, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void addAnswers() {
@@ -130,8 +162,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         RadioButton btnAns = (RadioButton) findViewById(rgAnswers.getCheckedRadioButtonId());
         String ans = (String) btnAns.getText();
 
-        if (ans.equalsIgnoreCase(correctAnswer)) {
-            user_score++;
+        if (ans.equalsIgnoreCase(correctAnswer) && user_score < numQuestions) {
+                user_score++;
         }
         showNextQuestion();
     }

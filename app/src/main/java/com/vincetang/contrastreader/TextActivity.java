@@ -32,6 +32,8 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public JSONArray passages;
     private Button btnDone;
     private  ArrayList<Question> passage_questions;
+    private int userScore, level;
+    private String title;
     //TODO create timer
 
     //JSON Node names
@@ -61,34 +63,49 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
 
         Bundle extras = getIntent().getExtras();
 
+        // This is used when the 2nd passage is loaded
         if (extras != null) {
-            String title = extras.getString("title");
+            title = extras.getString("title");
+            userScore = extras.getInt("userScore");
+            level = extras.getInt("level");
+
+
             getSupportActionBar().setTitle(title);
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
             if (passage != null)
-                //TODO rich test and plain text
+                //TODO rich text and plain text
                 txtData.setText(passage.text);
 
         } else {
             Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
         }
+            String message;
+            // Dialog box to start timer and let user begin
+            if (level == 2) {
+                message = "You have completed the first passage! This is the last exercise.\n\n" +
+                        "Press Start when you're ready to begin reading.\n\n" +
+                        "Press Done at the bottom of the screen when you have finished reading.";
+            } else {
+                message = "Welcome to the reading exercise!\n" +
+                        "This is the first of two passages.\n\n" +
+                        "Press Start when you're ready to begin reading\n\n" +
+                        "Press Done at the bottom of the screen when you have finished reading.";
+            }
 
-        // Dialog box to start timer and let user begin
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_media_play)
-                .setTitle("Start reading")
-                .setMessage("Press Start when you're ready to begin reading.\n\nPress " +
-                        "Done at the bottom of the screen when you have finished reading.")
-                .setCancelable(false)
-                .setPositiveButton("Start", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //TODO start timer here
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Passage " + level + " of 2")
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setPositiveButton("Start", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //TODO start timer here
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+
     }
 
     @Override
@@ -138,7 +155,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                 for (int i = 0; i < passages.length(); i++) {
                     JSONObject passage = passages.getJSONObject(i);
 
-                    String title = passage.getString(TAG_TITLE);
+                    title = passage.getString(TAG_TITLE);
 
                     // only parse the rest if it's the right passage
                     if (title.equalsIgnoreCase(passageTitle)) {
@@ -187,11 +204,13 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDone:
-                //TODO load the quiz and stop timer
+                //TODO stop timer
 
                 // pass questions to QuizActivity
                 Intent intent = new Intent(TextActivity.this, QuizActivity.class);
                 intent.putParcelableArrayListExtra("questions", passage_questions);
+                intent.putExtra("level", level);
+                intent.putExtra("title",title);
                 startActivity(intent);
 
                 break;

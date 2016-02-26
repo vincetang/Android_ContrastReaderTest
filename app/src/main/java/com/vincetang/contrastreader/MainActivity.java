@@ -1,5 +1,6 @@
 package com.vincetang.contrastreader;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -29,8 +30,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     private Switch modeSwitch;
     private Button btnText1, btnText2, btnText3, btnText4;
+    private int level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnText3.setOnClickListener(this);
         btnText4.setOnClickListener(this);
 
+        level = 1;
     }
 
     @Override
@@ -87,11 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()) {
 
             case R.id.modeSwitch:
-                if (modeSwitch.isChecked())
+                if (modeSwitch.isChecked()) {
                     modeSwitch.setText(R.string.contrast_on);
-                else
                     //TODO set rich or plain text setting
+                } else {
                     modeSwitch.setText(R.string.contrast_off);
+                }
                 break;
             case R.id.btnText1:
                 loadTextActivity((String) btnText1.getText());
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void loadTextActivity(String title) {
         Intent intent = new Intent(MainActivity.this, TextActivity.class);
         intent.putExtra("title", title);
-
+        intent.putExtra("level", level);
         startActivity(intent);
     }
 
