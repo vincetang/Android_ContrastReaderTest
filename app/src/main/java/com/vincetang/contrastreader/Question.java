@@ -8,6 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Vince on 16-02-23.
  */
+
 public class Question implements Parcelable {
     public String title;
     public String question;
@@ -21,42 +22,11 @@ public class Question implements Parcelable {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public ArrayList<String> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(ArrayList<String> answers) {
-        this.answers = answers;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
 
     protected Question(Parcel in) {
         title = in.readString();
         question = in.readString();
+        answers = new ArrayList<String>();
         in.readStringList(answers);
         correctAnswer = in.readString();
     }
@@ -100,6 +70,19 @@ public class Question implements Parcelable {
         }
     };
 
+    public String getTitle() {
+        return title;
+    }
 
+    public String getQuestion() {
+        return question;
+    }
 
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
 }

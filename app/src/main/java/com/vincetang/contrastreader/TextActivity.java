@@ -31,7 +31,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private String rawJSON;
     public JSONArray passages;
     private Button btnDone;
-
+    private  ArrayList<Question> passage_questions;
     //TODO create timer
 
     //JSON Node names
@@ -78,7 +78,9 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_media_play)
                 .setTitle("Start reading")
-                .setMessage("Press Start when you're ready to begin reading")
+                .setMessage("Press Start when you're ready to begin reading.\n\nPress " +
+                        "Done at the bottom of the screen when you have finished reading.")
+                .setCancelable(false)
                 .setPositiveButton("Start", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -142,7 +144,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                     if (title.equalsIgnoreCase(passageTitle)) {
                         String text = passage.getString(TAG_TEXT);
                         // for each passage, create a new array of questions
-                        ArrayList<Question> passage_questions = new ArrayList<Question>();
+                        passage_questions = new ArrayList<Question>();
 
                         JSONArray questions = passage.getJSONArray(TAG_QUESTIONS);
                         for (int j = 0; j < questions.length(); j++) {
@@ -186,6 +188,12 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btnDone:
                 //TODO load the quiz and stop timer
+
+                // pass questions to QuizActivity
+                Intent intent = new Intent(TextActivity.this, QuizActivity.class);
+                intent.putParcelableArrayListExtra("questions", passage_questions);
+                startActivity(intent);
+
                 break;
             default:
                 break;
