@@ -17,7 +17,7 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="done">Done</string>
     <string name="title_activity_quiz">QuizActivity</string>
-    <string name="btnSubmit">Submit</string>
+    <string name="btnSubmit">Continue</string>
     <string name="btnSkip">Skip</string>
     <string name="txtQuestion">Question Text Placeholder</string>
     <string name="txtQuestionNumber">Question Number Placeholder</string>

@@ -59,6 +59,22 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showNextQuestion() {
         if (questionIndex < numQuestions) {
+
+            // last question
+//            btnSubmit.setVisibility(View.INVISIBLE);
+            btnSubmit.setEnabled(false);
+            if (questionIndex == numQuestions - 1) {
+                btnSubmit.setText("Complete Quiz");
+            }
+            rgAnswers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    if (!btnSubmit.isEnabled() &&
+                            rgAnswers.getCheckedRadioButtonId() != -1) {
+                        btnSubmit.setEnabled(true);
+                    }
+                }
+            });
             rgAnswers.removeAllViews();
             String txtQuestionNumber = questions.get(questionIndex).getTitle();
             String txtQuestionText = questions.get(questionIndex).getQuestion();
@@ -76,7 +92,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void completeQuiz() {
-        Toast.makeText(this,"Quiz completed", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Quiz completed.\n\nYour score is : " + user_score, Toast.LENGTH_LONG).show();
     }
 
     private void addAnswers() {
