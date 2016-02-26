@@ -1,17 +1,16 @@
 package com.vincetang.contrastreader;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,10 +20,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private RadioGroup rgAnswers;
     private TextView tvQuestionNumber;
     private TextView tvQuestion;
+    private String correctAnswer;
+    public int user_score;
+
 
     private int questionIndex;
     private int numQuestions;
-    public Button btnDone;
+    public Button btnSubmit;
     public Button btnSkip;
 
     @Override
@@ -35,10 +37,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         toolbar.setTitle("Quiz");
 
-        btnDone = (Button) findViewById(R.id.btnDone);
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSkip = (Button) findViewById(R.id.btnSkip);
 
-        btnDone.setOnClickListener(this);
+        btnSubmit.setOnClickListener(this);
         btnSkip.setOnClickListener(this);
 
         questions = getIntent().getParcelableArrayListExtra("questions");
@@ -48,23 +50,39 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         tvQuestion = (TextView) findViewById(R.id.txtQuestion);
 
         numQuestions = questions.size();
+
+        user_score = 0;
         questionIndex = 0;
 
-        showNextQuestion(questionIndex);
+        showNextQuestion();
     }
 
-    private void showNextQuestion(int index) {
-        if (index < numQuestions) {
-            String txtQuestionNumber = questions.get(index).getTitle();
-            String txtQuestionText = questions.get(index).getQuestion();
+    private void showNextQuestion() {
+        if (questionIndex < numQuestions) {
+            rgAnswers.removeAllViews();
+            String txtQuestionNumber = questions.get(questionIndex).getTitle();
+            String txtQuestionText = questions.get(questionIndex).getQuestion();
+            correctAnswer = questions.get(questionIndex).getCorrectAnswer();
 
             tvQuestionNumber.setText(txtQuestionNumber);
             tvQuestion.setText(txtQuestionText);
 
-            ArrayList<String> answers = questions.get(index).getAnswers();
-            for (int j = 0; j < answers.size(); j++) {
-                addRadioButtonAnswer(answers.get(j));
-            }
+            addAnswers();
+
+            questionIndex++;
+        } else {
+            completeQuiz();
+        }
+    }
+
+    private void completeQuiz() {
+        Toast.makeText(this,"Quiz completed", Toast.LENGTH_LONG).show();
+    }
+
+    private void addAnswers() {
+        ArrayList<String> answers = questions.get(questionIndex).getAnswers();
+        for (int j = 0; j < answers.size(); j++) {
+            addRadioButtonAnswer(answers.get(j));
         }
     }
 
@@ -83,10 +101,42 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnDone:
+            case R.id.btnSubmit:
+                checkAnswer();
                 break;
             case R.id.btnSkip:
+                skipQuestion();
                 break;
         }
+    }
+
+    private void checkAnswer() {
+        RadioButton btnAns = (RadioButton) findViewById(rgAnswers.getCheckedRadioButtonId());
+        String ans = (String) btnAns.getText();
+
+        if (ans.equalsIgnoreCase(correctAnswer)) {
+            user_score++;
+        }
+        showNextQuestion();
+    }
+
+    private void skipQuestion() {
+        new AlertDialog.Builder(this)
+                .setTitle("Skip Question")
+                .setMessage("Are you sure you want to skip this question?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showNextQuestion();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
     }
 }
