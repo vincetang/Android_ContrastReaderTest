@@ -21,10 +21,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private RadioGroup rgAnswers;
     private TextView tvQuestionNumber;
     private TextView tvQuestion;
+
+    private boolean contrastOn;
     private String correctAnswer;
     public int user_score;
-
-
     private int questionIndex;
     private int numQuestions;
     private int level;
@@ -60,6 +60,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         Bundle extra = getIntent().getExtras();
         level = extra.getInt("level");
         title = extra.getString("title");
+        contrastOn = extra.getBoolean("contrastOn");
+
         getSupportActionBar().setTitle(title + " Quiz");
 
         showNextQuestion();
@@ -69,10 +71,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         if (questionIndex < numQuestions) {
 
             // last question
-//            btnSubmit.setVisibility(View.INVISIBLE);
             btnSubmit.setEnabled(false);
             if (questionIndex == numQuestions - 1) {
-                btnSubmit.setText("Complete Quiz");
+                btnSubmit.setText(R.string.btnCompleteQuiz);
             }
             rgAnswers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
@@ -101,13 +102,15 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private void completeQuiz() {
         if (level < 2) {
-        level++;
+            level++;
 
-        //TODO load uncontrasted or contrasted version depending on what was read
-        Intent intent = new Intent(QuizActivity.this, TextActivity.class);
-        intent.putExtra("title", "Opera");
-        intent.putExtra("level", level);
-        startActivity(intent);
+            //TODO load uncontrasted or contrasted version depending on what was read
+            contrastOn = !contrastOn;
+            Intent intent = new Intent(QuizActivity.this, TextActivity.class);
+            intent.putExtra("title", "Opera");
+            intent.putExtra("level", level);
+            intent.putExtra("contrastOn", contrastOn);
+            startActivity(intent);
         } else {
             //TODO write out results
 

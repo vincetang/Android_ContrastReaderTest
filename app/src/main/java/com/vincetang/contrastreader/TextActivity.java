@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
@@ -33,7 +34,9 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnDone;
     private  ArrayList<Question> passage_questions;
     private int userScore, level;
+    private boolean contrastOn;
     private String title;
+
     //TODO create timer
 
     //JSON Node names
@@ -68,14 +71,20 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             title = extras.getString("title");
             userScore = extras.getInt("userScore");
             level = extras.getInt("level");
-
+            contrastOn = extras.getBoolean("contrastOn");
 
             getSupportActionBar().setTitle(title);
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
-            if (passage != null)
-                //TODO rich text and plain text
-                txtData.setText(passage.text);
+            if (passage != null) {
+                if (contrastOn) {
+                    //TODO rich text
+                    txtData.setText(Html.fromHtml(passage.text));
+                } else {
+                    //TODO plain text
+                    txtData.setText(Html.fromHtml(passage.text).toString());
+                }
+            }
 
         } else {
             Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
@@ -211,6 +220,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putParcelableArrayListExtra("questions", passage_questions);
                 intent.putExtra("level", level);
                 intent.putExtra("title",title);
+                intent.putExtra("contrastOn", contrastOn);
                 startActivity(intent);
 
                 break;

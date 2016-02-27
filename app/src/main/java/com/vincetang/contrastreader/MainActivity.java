@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Switch modeSwitch;
     private Button btnText1, btnText2, btnText3, btnText4;
     private int level;
+    private boolean contrastOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
 
         modeSwitch = (Switch) findViewById(R.id.modeSwitch);
+
+        contrastOn = false;
 
         // Buttons for text passages
         btnText1 = (Button) findViewById(R.id.btnText1);
@@ -93,9 +96,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.modeSwitch:
                 if (modeSwitch.isChecked()) {
                     modeSwitch.setText(R.string.contrast_on);
-                    //TODO set rich or plain text setting
+                    contrastOn = true;
                 } else {
                     modeSwitch.setText(R.string.contrast_off);
+                    contrastOn = false;
                 }
                 break;
             case R.id.btnText1:
@@ -119,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, TextActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("level", level);
+        intent.putExtra("contrastOn", contrastOn);
         startActivity(intent);
     }
 
