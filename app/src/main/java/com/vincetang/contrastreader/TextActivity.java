@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class TextActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,6 +37,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private int userScore, level;
     private boolean contrastOn;
     private String title;
+    private long timeStart, timeEnd, time;
 
     //TODO create timer
 
@@ -78,10 +80,8 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             Passage passage = parseJSON(title);
             if (passage != null) {
                 if (contrastOn) {
-                    //TODO rich text
                     txtData.setText(Html.fromHtml(passage.text));
                 } else {
-                    //TODO plain text
                     txtData.setText(Html.fromHtml(passage.text).toString());
                 }
             }
@@ -109,7 +109,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                     .setPositiveButton("Start", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //TODO start timer here
+                            timeStart = System.currentTimeMillis();
                             dialog.dismiss();
                         }
                     })
@@ -214,13 +214,15 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btnDone:
                 //TODO stop timer
-
+                timeEnd = System.currentTimeMillis();
+                time = timeEnd - timeStart;
                 // pass questions to QuizActivity
                 Intent intent = new Intent(TextActivity.this, QuizActivity.class);
                 intent.putParcelableArrayListExtra("questions", passage_questions);
                 intent.putExtra("level", level);
                 intent.putExtra("title",title);
                 intent.putExtra("contrastOn", contrastOn);
+                intent.putExtra("time", time);
                 startActivity(intent);
 
                 break;

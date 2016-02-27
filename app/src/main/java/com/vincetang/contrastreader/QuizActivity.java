@@ -1,11 +1,16 @@
 package com.vincetang.contrastreader;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -13,7 +18,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,11 +37,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean contrastOn;
     private String correctAnswer;
-    public int user_score;
+    private int user_score;
+    private int skippedCount;
     private int questionIndex;
     private int numQuestions;
     private int level;
     private String title;
+    private long time;
 
     public Button btnSubmit;
     public Button btnSkip;
@@ -54,6 +69,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         numQuestions = questions.size();
 
+        skippedCount = 0;
         user_score = 0;
         questionIndex = 0;
 
@@ -61,6 +77,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         level = extra.getInt("level");
         title = extra.getString("title");
         contrastOn = extra.getBoolean("contrastOn");
+        time = extra.getLong("time");
 
         getSupportActionBar().setTitle(title + " Quiz");
 
@@ -101,10 +118,27 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void completeQuiz() {
+        String strMode;
+        if (contrastOn) {
+            strMode = "Contrast On";
+        } else {
+            strMode = "Contrast Off";
+        }
+        double timeSeconds = time/1000.00;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-d-y-HH:mm:ss");
+        Date now = new Date();
+        String strDate = dateFormat.format(now);
+
+        String result = "Date: " + strDate + " Passage: " + title + " Mode: " + strMode + "Read Time(sec): " +
+                timeSeconds + " Quiz score: " + user_score + "/" + numQuestions + " Skipped: " + skippedCount + "\n\n";
+        Log.v("Quiz Result", result);
+
+        WriteData writeData = new WriteData();
+        writeData.execute(result);
+//        Log.d("WRITEFILE", "File written to: " + getFilesDir().toString());
+
         if (level < 2) {
             level++;
-
-            //TODO load uncontrasted or contrasted version depending on what was read
             contrastOn = !contrastOn;
             Intent intent = new Intent(QuizActivity.this, TextActivity.class);
             intent.putExtra("title", "Opera");
@@ -112,8 +146,6 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("contrastOn", contrastOn);
             startActivity(intent);
         } else {
-            //TODO write out results
-
             new AlertDialog.Builder(this)
                     .setTitle("Thank you!")
                     .setMessage("You have completed the experiment.\n\nPlease return this device " +
@@ -179,6 +211,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        skippedCount++;
                         showNextQuestion();
                         dialog.dismiss();
                     }
@@ -189,5 +222,67 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                         dialog.dismiss();
                     }
                 }).show();
+    }
+
+    public class WriteData extends AsyncTask<String, Void, String> {
+
+        /**
+         * <p>Runs on the UI thread after {@link #doInBackground}. The
+         * specified result is the value returned by {@link #doInBackground}.</p>
+         * <p>
+         * <p>This method won't be invoked if the task was cancelled.</p>
+         *
+         * @param s The result of the operation computed by {@link #doInBackground}.
+         * @see #onPreExecute
+         * @see #doInBackground
+         * @see #onCancelled(Object)
+         */
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.d("FILEOUTPUT", "Completed writing to file.");
+        }
+
+        /**
+         * Override this method to perform a computation on a background thread. The
+         * specified parameters are the parameters passed to {@link #execute}
+         * by the caller of this task.
+         * <p>
+         * This method can call {@link #publishProgress} to publish updates
+         * on the UI thread.
+         *
+         * @param params The parameters of the task.
+         * @return A result, defined by the subclass of this task.
+         * @see #onPreExecute()
+         * @see #onPostExecute
+         * @see #publishProgress
+         */
+
+        @Override
+        protected String doInBackground(String... params) {
+            String FILENAME = "results_file";
+            String strResult = params[0];
+
+            String root = Environment.getExternalStorageDirectory().toString();
+            File myDir = new File(root + "/saved_data");
+            myDir.mkdirs();
+
+            File file = new File(myDir, FILENAME);
+            try {
+                FileWriter fos = new FileWriter(file, true);
+                fos.append(strResult);
+                Log.d("FILEOUTPUT", strResult);
+                Log.d("WRITEFILE", "File written");
+                fos.close();
+            } catch (FileNotFoundException e) {
+                Log.e("FILEOUTPUT", "Could not open file: " + e.getMessage());
+                e.printStackTrace();
+            } catch (IOException e) {
+                Log.e("FILEOUTPUT", "Could not write to file: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+            return strResult;
+        }
     }
 }

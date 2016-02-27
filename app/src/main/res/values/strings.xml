@@ -22,4 +22,6 @@
     <string name="txtQuestion">Question Text Placeholder</string>
     <string name="txtQuestionNumber">Question Number Placeholder</string>
     <string name="btnCompleteQuiz">Complete Quiz</string>
+    <string name="action_results">Results</string>
+    <string name="action_clear_results">Clear Results</string>
 </resources>
