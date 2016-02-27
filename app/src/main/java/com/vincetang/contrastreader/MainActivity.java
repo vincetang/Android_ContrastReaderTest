@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.action_results:
                 Log.d("ACTIONBAR", "action_results pressed");
-                showResults();
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                startActivity(intent);
 
                 break;
             case R.id.action_clear_results:
@@ -119,30 +120,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private void showResults() {
-        String FILENAME = "results_file";
-        String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/saved_data");
-        File file = new File(myDir, FILENAME);
-        StringBuilder results = new StringBuilder();
-        if (file.exists()) {
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                    results.append(line);
-                }
-                br.close();
-                
-            } catch (IOException e) {
-                Log.e("FILEREADER", "Failed to read in results file." + e.getMessage());
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(this, "No results found", Toast.LENGTH_SHORT);
-        }
-    }
 
     private void eraseResults() {
         String FILENAME = "results_file";

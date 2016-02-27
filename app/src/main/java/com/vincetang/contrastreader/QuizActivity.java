@@ -129,8 +129,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         Date now = new Date();
         String strDate = dateFormat.format(now);
 
-        String result = "Date: " + strDate + " Passage: " + title + " Mode: " + strMode + "Read Time(sec): " +
-                timeSeconds + " Quiz score: " + user_score + "/" + numQuestions + " Skipped: " + skippedCount + "\n\n";
+        String result = "Date: " + strDate + "\nPassage: " + title + "\nMode: " + strMode + "\nRead Time (sec): " +
+                timeSeconds + "\nQuiz score: " + user_score + "/" + numQuestions + "\nSkipped: " + skippedCount + "\n\n";
         Log.v("Quiz Result", result);
 
         WriteData writeData = new WriteData();
@@ -158,7 +158,6 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(homeIntent);
                         }
                     }).show();
-            Toast.makeText(this, "Complete!\n User Score: " + user_score, Toast.LENGTH_LONG).show();
         }
     }
 
