@@ -42,12 +42,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnText3 = (Button) findViewById(R.id.btnText3);
         btnText4 = (Button) findViewById(R.id.btnText4);
 
+        // Switch contrast on or off for the first passage
         modeSwitch.setOnClickListener(this);
+
+        // Add click listeners
         btnText1.setOnClickListener(this);
         btnText2.setOnClickListener(this);
         btnText3.setOnClickListener(this);
         btnText4.setOnClickListener(this);
 
+        // Start at level 1 (experiment goes through 2 levels)
         level = 1;
     }
 
@@ -66,12 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         switch (item.getItemId()) {
+            // Show results
             case R.id.action_results:
                 Log.d("ACTIONBAR", "action_results pressed");
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 startActivity(intent);
-
                 break;
+
+            // Delete results by deleting the results file
             case R.id.action_clear_results:
                 Log.d("ACTIONBAR", "action_clear_results pressed");
                 new AlertDialog.Builder(this)
@@ -99,7 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * Erase the file containing the results
+     */
     private void eraseResults() {
         String FILENAME = "results_file";
         String root = Environment.getExternalStorageDirectory().toString();
@@ -144,6 +152,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Loads the text activity showing the passage with the title passed in
+     * @param title: title of the passage to load
+     */
     private void loadTextActivity(String title) {
         Intent intent = new Intent(MainActivity.this, TextActivity.class);
         intent.putExtra("title", title);

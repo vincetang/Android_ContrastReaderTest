@@ -52,6 +52,8 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_text);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Show back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -61,6 +63,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         txtData = (TextView) findViewById(R.id.txtData);
         txtData.setMovementMethod(new ScrollingMovementMethod());
 
+        // Get any information passed in
         Bundle extras = getIntent().getExtras();
 
         // This is used when the 2nd passage is loaded
@@ -71,6 +74,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             contrastOn = extras.getBoolean("contrastOn");
 
             getSupportActionBar().setTitle(title);
+
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
             if (passage != null) {
@@ -84,37 +88,40 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Toast.makeText(this, "An Error Ocurred", Toast.LENGTH_LONG).show();
         }
-            String message;
-            // Dialog box to start timer and let user begin
-            if (level == 2) {
-                message = "You have completed the first passage! This is the last exercise.\n\n" +
-                        "Press Start when you're ready to begin reading.\n\n" +
-                        "Press Done at the bottom of the screen when you have finished reading.";
-            } else {
-                message = "Welcome to the reading exercise!\n" +
-                        "This is the first of two passages.\n\n" +
-                        "Press Start when you're ready to begin reading.\n\n" +
-                        "Press Done at the bottom of the screen when you have finished reading.";
-            }
 
-            new AlertDialog.Builder(this)
-                    .setTitle("Passage " + level + " of 2")
-                    .setMessage(message)
-                    .setCancelable(false)
-                    .setPositiveButton("Start", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            timeStart = System.currentTimeMillis();
-                            dialog.dismiss();
-                        }
-                    })
-                    .show();
+        String message;
+        // Message for dialog box to start timer and let user begin
+        if (level == 2) {
+            message = "You have completed the first passage! This is the last exercise.\n\n" +
+                    "Press Start when you're ready to begin reading.\n\n" +
+                    "Press Done at the bottom of the screen when you have finished reading.";
+        } else {
+            message = "Welcome to the reading exercise!\n" +
+                    "This is the first of two passages.\n\n" +
+                    "Press Start when you're ready to begin reading.\n\n" +
+                    "Press Done at the bottom of the screen when you have finished reading.";
+        }
+
+        // Dialog box that prompts user and starts timer for reading
+        new AlertDialog.Builder(this)
+                .setTitle("Passage " + level + " of 2")
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Start", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        timeStart = System.currentTimeMillis();
+                        dialog.dismiss();
+                    }
+                })
+                .show();
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            // Back button returns to MainActivity
             case android.R.id.home:
                 Intent upIntent = new Intent(this, MainActivity.class);
                 startActivity(upIntent);
@@ -124,8 +131,13 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * This function reads in a JSON file named data (raw resource) and returns
+     * it as a string
+     * @return sb: the JSON data represented as a string
+     */
     private String readJSONFile() {
-        // Read the json file for the text with the given title
+        // Read in the JSON file and write it to a string
         InputStream is = getResources().openRawResource(R.raw.data);
         InputStreamReader isr = new InputStreamReader(is);
 
@@ -147,6 +159,12 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         return sb.toString();
     }
 
+    /**
+     * Reads JSON data and grabs the node that is a passage with the title passed in. This
+     * method reads in the JSON objects and creates a Passage object
+     * @param passageTitle the title of the passage to get text from
+     * @return a Passage object with the title passed in
+     */
     private Passage parseJSON(String passageTitle) {
         // parse JSON
         if (rawJSON != null) {
@@ -208,6 +226,8 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDone:
+                // Reader has completed the passage
+                // Stop the timer and start the quiz in QuizActivity
                 timeEnd = System.currentTimeMillis();
                 time = timeEnd - timeStart;
                 // pass questions to QuizActivity
