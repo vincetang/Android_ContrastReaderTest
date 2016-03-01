@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -25,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class TextActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,8 +35,6 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private boolean contrastOn;
     private String title;
     private long timeStart, timeEnd, time;
-
-    //TODO create timer
 
     //JSON Node names
     private static final String TAG_PASSAGES = "passages";
@@ -98,7 +93,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 message = "Welcome to the reading exercise!\n" +
                         "This is the first of two passages.\n\n" +
-                        "Press Start when you're ready to begin reading\n\n" +
+                        "Press Start when you're ready to begin reading.\n\n" +
                         "Press Done at the bottom of the screen when you have finished reading.";
             }
 
@@ -213,7 +208,6 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDone:
-                //TODO stop timer
                 timeEnd = System.currentTimeMillis();
                 time = timeEnd - timeStart;
                 // pass questions to QuizActivity
