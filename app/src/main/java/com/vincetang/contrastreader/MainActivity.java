@@ -19,7 +19,6 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private Switch modeSwitch;
     private Button btnText1, btnText2, btnText3, btnText4;
     private int level;

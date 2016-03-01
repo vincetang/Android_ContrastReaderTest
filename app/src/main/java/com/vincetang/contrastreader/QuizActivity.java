@@ -37,7 +37,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int questionIndex;
     private int numQuestions;
     private int level;
-    private String title;
+    private String title, nextTitle;
     private long time;
 
     public Button btnSubmit;
@@ -134,9 +134,25 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         if (level < 2) {
             level++;
+
+            switch (title.toLowerCase()) {
+                case "dolphins":
+                    nextTitle = "Opera";
+                    break;
+                case "opera":
+                    nextTitle = "Unsinkable Ship";
+                    break;
+                case "unsinkable ship":
+                    nextTitle = "Erosion In America";
+                    break;
+                case "erosion in america":
+                    nextTitle = "Dolphins";
+                    break;
+            }
+
             contrastOn = !contrastOn;
             Intent intent = new Intent(QuizActivity.this, TextActivity.class);
-            intent.putExtra("title", "Opera");
+            intent.putExtra("title", nextTitle);
             intent.putExtra("level", level);
             intent.putExtra("contrastOn", contrastOn);
             startActivity(intent);
