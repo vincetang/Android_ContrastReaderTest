@@ -34,7 +34,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnDone;
     private  ArrayList<Question> passage_questions;
     private int userScore, level;
-    private boolean contrastOn;
+//    private boolean contrastOn;
     private String title;
     private long timeStart, timeEnd, time;
 
@@ -73,7 +73,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             title = extras.getString("title");
             userScore = extras.getInt("userScore");
             level = extras.getInt("level");
-            contrastOn = extras.getBoolean("contrastOn");
+//            contrastOn = extras.getBoolean("contrastOn");
 
             getSupportActionBar().setTitle(title);
 
@@ -261,7 +261,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putParcelableArrayListExtra("questions", passage_questions);
                 intent.putExtra("level", level);
                 intent.putExtra("title",title);
-                intent.putExtra("contrastOn", contrastOn);
+//                intent.putExtra("contrastOn", contrastOn);
                 intent.putExtra("time", time);
                 startActivity(intent);
 
