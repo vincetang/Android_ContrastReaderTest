@@ -146,6 +146,19 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             level++;
 
             switch (title.toLowerCase()) {
+
+                //data2.json
+                case "the social function of science":
+                    nextTitle = "coming of age in samoa";
+                    break;
+                case "coming of age in samoa":
+                    nextTitle = "florence nightingale";
+                    break;
+                case "florence nightingale":
+                    nextTitle = "the social function of science";
+                    break;
+
+                // data.json
                 case "dolphins":
                     nextTitle = "Opera";
                     break;
@@ -155,9 +168,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 case "unsinkable ship":
                     nextTitle = "Dolphins";
                     break;
-//                case "erosion in america":
-//                    nextTitle = "Dolphins";
-//                    break;
+                case "erosion in america":
+                    nextTitle = "Dolphins";
+                    break;
+
             }
 
             contrastOn = !contrastOn; //don't need this

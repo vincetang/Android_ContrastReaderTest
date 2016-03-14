@@ -164,7 +164,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
      */
     private String readJSONFile() {
         // Read in the JSON file and write it to a string
-        InputStream is = getResources().openRawResource(R.raw.data);
+        InputStream is = getResources().openRawResource(R.raw.data2);
         InputStreamReader isr = new InputStreamReader(is);
 
         int charRead;

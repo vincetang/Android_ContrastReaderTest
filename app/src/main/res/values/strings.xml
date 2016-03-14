@@ -6,10 +6,10 @@
     <!-- Text passage titles -->
     <string name="title_activity_text">TextActivity</string>
 
-    <string name="text_1">Dolphins</string>
-    <string name="text_2">Opera</string>
-    <string name="text_3">Unsinkable Ship</string>
-    <string name="text_4">Erosion in America</string>
+    <string name="text_1">The Social Function of Science</string>
+    <string name="text_2">Coming of Age in Samoa</string>
+    <string name="text_3">Florence Nightingale</string>
+    <!--<string name="text_4">Erosion in America</string>-->
 
     <string name="contrast_on">Contrast Mode On </string>
     <string name="contrast_off">Contrast Mode Off</string>

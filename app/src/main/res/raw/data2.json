@@ -1,0 +1,172 @@
+{
+	"passages": [
+	{
+		"title": "The Social Function of Science",
+		"text": "<span class=\"nonkeywords\">The pioneers of the teaching of <b>science</b> imagined that its introduction into education would </span><b>remove the conventionality, artificiality, and backward-lookingness which were characteristic of classical studies</b><span class=\"nonkeywords\">, but they were gravely disappointed. So, too, in their time had the humanists thought that the study of the classical authors in the original would banish at once the dull pedantry and superstition of mediaeval scholasticism. The professional<br> schoolmaster was a match for both of them, and has almost managed to make the understanding of chemical reactions as dull and as dogmatic an affair as the reading of Virgil's Aeneid. The chief claim for the use of </span><b>science in education</b><span class=\"nonkeywords\"> is that it</span> <b>teaches a child something about the actual universe in which he is living</b><span class=\"nonkeywords\">, in making him acquainted with the results of scientific discovery, and at the same time </span><b>teaches him how to think logically and inductively by studying scientific method</b><span class=\"nonkeywords\">. A certain limited success has been reached in the first of these aims, but practically none at all in the second. Those privileged members of the community who have been through a secondary or public school education may be expected to know something about the elementary physics and chemistry of a hundred years ago, but they probably know hardly more than any bright boy can pick up from an interest in wireless or scientific hobbies out of school hours. As to the learning of scientific method, the whole thing is palpably a farce. Actually, for the </span><b>convenience of teachers and the requirements of the examination system</b><span class=\"nonkeywords\">, it is necessary that the pupils not only </b><b>do not learn scientific method</b><span class=\"nonkeywords\"> but learn precisely the reverse, that is, to </b><b>believe exactly what they are told and to reproduce it</b><span class=\"nonkeywords\"> when asked, whether it seems nonsense to them or not. The way in which educated people respond to such </span><b>quackeries as spiritualism or astrology</b><span class=\"nonkeywords\">, not to say more dangerous ones such as racial theories or currency myths, shows that </span><b>fifty years of education in the method of science in Britain or Germany has produced no visible effect whatever</b><span class=\"nonkeywords\">. The </span><b>only way of learning the method of science is</b><span class=\"nonkeywords\"> the long and bitter way of </span><b>personal experience</b><span class=\"nonkeywords\">, and, until the educational or social systems are altered to make this possible, the </span><b>best we can expect is the production of a minority of people who are able to acquire some of the techniques of science</b><span class=\"nonkeywords\"> and a still smaller minority who are able to use and develop them.</span>",
+		"questions": [
+		{
+			"question_number": "Question 1 of 3",
+			"question": "The author implies that the 'professional schoolmaster' has",
+			"answers": ["A) no interest in teaching science",
+						"B) thwarted attempts to enliven education",
+						"C) aided true learning",
+						"D) supported the humanists ",
+						"E) been a pioneer in both science and humanities."],
+			"correct_answer": "B) thwarted attempts to enliven education"
+		},
+		{
+			"question_number": "Question 2 of 5",
+			"question": "The author blames all of the following for the failure to impart scientific method through the education system except",
+			"answers": ["A) poor teaching",
+						"B) examination methods",
+						"C) lack of direct experience",
+						"D) the social and education systems",
+						"E) lack of interest on the part of students"],
+			"correct_answer": "E) lack of interest on the part of students"
+		},
+		{
+			"question_number": "Question 3 of 5",
+			"question": "If the author were to study current education in science to see how things have changed since he wrote the piece, he would probably be most interested in the answer to which of the following questions?",
+			"answers": ["A) Do students know more about the world about them?",
+						"B) Do students spend more time in laboratories?",
+						"C) Can students apply their knowledge logically?",
+						"D) Have textbooks improved?",
+						"E) Do they respect their teachers?"],
+			"correct_answer": "C) Can students apply their knowledge logically?"
+		},
+		{
+			"question_number": "Question 4 of 5",
+			"question": "Astrology is mentioned as an example of",
+			"answers": ["A) a science that needs to be better understood",
+						"B) a belief which no educated people hold",
+						"C) something unsupportable to those who have absorbed the methods of science",
+						"D) the gravest danger to society ",
+						"E) an acknowledged failure of science"],
+			"correct_answer": "C) something unsupportable to those who have absorbed the methods of science"
+		},
+		{
+			"question_number": "Question 5 of 5",
+			"question": "All of the following can be inferred from the text except",
+			"answers": ["A) at the time of writing, not all children received a secondary school education ",
+						"B) the author finds chemical reactions interesting",
+						"C) science teaching has imparted some knowledge of facts to some children",
+						"D) the author believes that many teachers are authoritarian",
+						"E) it is relatively easy to learn scientific method"],
+			"correct_answer": "E) it is relatively easy to learn scientific method"
+		}
+		]
+	},
+	{
+		"title": "Coming of Age in Samoa",
+		"text": "Coming of Age in Samoa",
+		"questions": [
+		{
+			"question_number": "Question 1 of 5",
+			"question": "The primary purpose of the passage with reference to the society under discussion is to",
+			"answers": ["A) explain some differences in the upbringing of girls and boys",
+			 			"B) criticize the deficiencies in the education of girls", 
+						"C) give a comprehensive account of a day in the life of an average young girl",
+						"D) delineate the role of young girls",
+						"E) show that young girls are trained to be useful to adults"],
+			"correct_answer": "A) explain some differences in the upbringing of girls and boys"
+		},
+		{
+			"question_number": "Question 2 of 5",
+			"question": "The list of techniques in paragraph one could best be described as",
+			"answers": ["A) household duties",
+						"B) rudimentary physical skills ",
+						"C) important responsibilities",
+						"D) useful social skills",
+						"E) monotonous tasks"],
+			"correct_answer": "D) useful social skills"
+		},
+		{
+			"question_number": "Question 3 of 5",
+			"question": "It can be inferred that the 'high standard of individual responsibility' is",
+			"answers": ["A) developed mainly through child-care duties",
+						"B) only present in girls",
+						"C) taught to the girl before she is entrusted with babies",
+						"D) actually counterproductive",
+						"E) weakened as the girl grows older"],
+			"correct_answer": "A) developed mainly through child-care duties"
+		},
+		{
+			"question_number": "Question 4 of 5",
+			"question": "The expression 'innocent of' is best taken to mean",
+			"answers": ["A) not guilty of",
+						"B) unskilled in",
+						"C) unsuited for",
+						"D) uninvolved in",
+						"E) uninterested in"],
+			"correct_answer": "B) unskilled in"
+		},
+		{
+			"question_number": "Question 5 of 5",
+			"question": "It can be inferred that in the community under discussion all of the following are important except",
+			"answers": ["A) domestic handicrafts",
+						"B) well-defined social structure",
+						"C) fishing skills",
+						"D) formal education",
+						"E) division of labor"],
+			"correct_answer": "D) formal education"
+		}
+		]
+	},
+	{
+		"title": "Florence Nightingale",
+		"text": "Florence Nightingale",
+		"questions": [
+		{
+			"question_number": "Question 1 of 5",
+			"question": "According to the author, the work done during the last fifty years of Florence Nightingale's life was, when compared with her work in the Crimea, all of the following except",
+			"answers": ["A) less dramatic",
+			 			"B) less demanding", 
+						"C) less well-known to the public",
+						"D) more important",
+						"E) more rewarding to Miss Nightingale herself"],
+			"correct_answer": "B) less demanding"
+		},
+		{
+			"question_number": "Question 2 of 5",
+			"question": "The 'fulcrum' refers to her",
+			"answers": ["A) reputation",
+						"B) mental energy",
+						"C) physical energy",
+						"D) overseas contacts",
+						"E) commitment to a cause"],
+			"correct_answer": "A) reputation"
+		},
+		{
+			"question_number": "Question 3 of 5",
+			"question": "The series of questions in the passage are",
+			"answers": ["A) the author's attempt to show the thoughts running through Miss Nightingale's mind",
+						"B) Miss Nightingale questioning her own conscience",
+						"C) Miss Nightingale's response to an actual questioner",
+						"D) Responses to the doctors who advised rest",
+						"E) The author's device to highlight the reactions to Miss Nightingale's plans"],
+			"correct_answer": "A) the author's attempt to show the thoughts running through Miss Nightingale's mind"
+		},
+		{
+			"question_number": "Question 4 of 5",
+			"question": "The author's attitude to his material is",
+			"answers": ["A) disinterested reporting of biographical details",
+						"B) over-inflation of a reputation",
+						"C) debunking a myth",
+						"D) uncritical presentation of facts",
+						"E) interpretation as well as narration"],
+			"correct_answer": "E) interpretation as well as narration"
+		},
+		{
+			"question_number": "Question 5 of 5",
+			"question": "In her statement Miss Nightingale intended to",
+			"answers": ["A) criticize the conditions in hospitals",
+						"B) highlight the unhealthy conditions under which ordinary soldiers were living",
+						"C) prove that conditions in the barracks were as bad as those in a military hospital",
+						"D) ridicule the dangers of army life",
+						"E) quote important statistics"],
+			"correct_answer": "B) highlight the unhealthy conditions under which ordinary soldiers were living"
+		}
+		]
+	}
+	]
+}

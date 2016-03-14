@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //modeSwitch = (Switch) findViewById(R.id.modeSwitch);
 
-        contrastOn = false;
+//        contrastOn = false;
 
         // Buttons for text passages
         btnText1 = (Button) findViewById(R.id.btnText1);
