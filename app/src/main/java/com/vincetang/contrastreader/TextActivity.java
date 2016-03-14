@@ -96,7 +96,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
 
                         if (m.find()) {
                             //String result = m.replaceAll("\n" + m.group(1) + " style=\"visibility:hidden;display:none\"" + ">");
-                            String result = m.replaceAll("<br>");
+                            String result = m.replaceAll("     ");
                             txtData.setText(Html.fromHtml(result));
                         } else {
                             // no keywords - just set normal text with bolded keywords
