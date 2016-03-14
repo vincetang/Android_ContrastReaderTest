@@ -96,7 +96,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
 
                         if (m.find()) {
                             //String result = m.replaceAll("\n" + m.group(1) + " style=\"visibility:hidden;display:none\"" + ">");
-                            String result = m.replaceAll("     ");
+                            String result = m.replaceAll("<br><br>");
                             txtData.setText(Html.fromHtml(result));
                         } else {
                             // no keywords - just set normal text with bolded keywords
@@ -123,7 +123,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                     "Press Done at the bottom of the screen when you have finished reading.\n\n";
         } else {
             message = "Welcome to the reading exercise!\n" +
-                    "This is the first of two passages.\n\n" +
+                    "This is the first of three passages.\n\n" +
                     "Press Start when you're ready to begin reading.\n\n" +
                     "Press Done at the bottom of the screen when you have finished reading.";
         }

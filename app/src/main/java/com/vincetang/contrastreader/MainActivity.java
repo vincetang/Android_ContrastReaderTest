@@ -51,8 +51,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnText3.setOnClickListener(this);
 //        btnText4.setOnClickListener(this);
 
-        // Start at level 1 (experiment goes through 2 levels)
+        // Start at level 1 (experiment goes through 3 levels)
         level = 1;
+
+        new AlertDialog.Builder(this)
+                .setTitle("Hello!")
+                .setCancelable(false)
+                .setMessage("Welcome to the reading experiment. Here you will explore a variety" +
+                        " of reading formats. You will be asked to read 3 passages in total. " +
+                        "After each passage there will be a quiz consisting of 5 questions." +
+                        "\n\nThank you for participating and enjoy the experiment!")
+                .setPositiveButton("Begin", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     @Override
