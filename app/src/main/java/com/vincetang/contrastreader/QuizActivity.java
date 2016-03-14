@@ -114,11 +114,21 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private void completeQuiz() {
         String strMode;
-        if (contrastOn) {
+
+        /*if (contrastOn) {
             strMode = "Contrast On";
         } else {
             strMode = "Contrast Off";
+        }*/
+
+        if (level == 1) {
+            strMode = "Normal Text";
+        } else if (level == 2) {
+            strMode = "Bold Keywords + Normal Text";
+        } else {
+            strMode = "Keywords Only";
         }
+
         double timeSeconds = time/1000.00;
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-d-y-HH:mm:ss");
         Date now = new Date();
@@ -132,7 +142,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         writeData.execute(result);
 //        Log.d("WRITEFILE", "File written to: " + getFilesDir().toString());
 
-        if (level < 2) {
+        if (level < 3) {
             level++;
 
             switch (title.toLowerCase()) {
@@ -143,14 +153,14 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     nextTitle = "Unsinkable Ship";
                     break;
                 case "unsinkable ship":
-                    nextTitle = "Erosion In America";
+                    nextTitle = "Dolphins";
                     break;
                 case "erosion in america":
                     nextTitle = "Dolphins";
                     break;
             }
 
-            contrastOn = !contrastOn;
+            contrastOn = !contrastOn; //don't need this
             Intent intent = new Intent(QuizActivity.this, TextActivity.class);
             intent.putExtra("title", nextTitle);
             intent.putExtra("level", level);

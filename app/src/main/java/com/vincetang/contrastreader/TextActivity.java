@@ -82,21 +82,24 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             if (passage != null) {
                 switch (level) {
                     case 1: // Level 1: Normal Text
-                        txtData.setText(Html.fromHtml(passage.text));
+                        txtData.setText(Html.fromHtml(passage.text).toString());
                         break;
                     case 2: // Level 2: Bold Keywords + Normal Text
-                        txtData.setText(Html.fromHtml(passage.text).toString());
+                        txtData.setText(Html.fromHtml(passage.text));
                         break;
                     case 3: // Level 3: Bold Keywords Only
                         // Match all spans with class "keyword" and insert display:non
-                        Pattern p = Pattern.compile("(<span\\s+.*?class=\"keywords\".*?)(>)");
+                        //String pattern_old = "(<span\\s+.*?class=\"keywords\".*?)(>)";
+                        String pattern = "<span\\s+.*?class=\"nonkeywords\".*?>.*?</span>";
+                        Pattern p = Pattern.compile(pattern);
                         Matcher m = p.matcher(passage.text);
 
                         if (m.find()) {
-                            String result = m.replaceAll(m.group(1) + " display:none" + ">");
+                            //String result = m.replaceAll("\n" + m.group(1) + " style=\"visibility:hidden;display:none\"" + ">");
+                            String result = m.replaceAll("<br>");
                             txtData.setText(Html.fromHtml(result));
                         } else {
-                            // no keywords?
+                            // no keywords - just set normal text with bolded keywords
                             txtData.setText(Html.fromHtml(passage.text));
                         }
                         break;
@@ -127,7 +130,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
 
         // Dialog box that prompts user and starts timer for reading
         new AlertDialog.Builder(this)
-                .setTitle("Passage " + level + " of 2")
+                .setTitle("Passage " + level + " of 3")
                 .setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton("Start", new DialogInterface.OnClickListener() {

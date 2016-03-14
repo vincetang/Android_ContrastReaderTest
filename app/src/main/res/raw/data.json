@@ -5,7 +5,7 @@
 	"passages": [
 	{
 		"title": "Dolphins",
-		"text": "<b>Dolphins are regarded as the friendliest creatures</b> <span class=\"hide\">in the sea and stories</span> of them helping drowning sailors have been common since Roman times. The more we learn about dolphins, the more we realize that their society is more complex than people previously imagined. They look after other dolphins when they are ill, care for pregnant mothers and protect the weakest in the community, as we do. Some scientists have suggested that dolphins have a language but it is much more probable that they communicate with each other without needing words. Could any of these mammals be more intelligent than man? Certainly the most common argument in favor of man's superiority over them that we can kill them more easily than they can kill us is the least satisfactory. On the contrary, the more we discover about these remarkable creatures, the less we appear superior when we destroy them.",
+		"text": "<b>Dolphins are regarded as the friendliest creatures</b> <span class=\"hide\">in the sea and stories</span> of them helping drowning sailors have been common since Roman times. The more we learn <span class=\"nonkeywords\">about dolphins, the more we realize</span> that their society is more complex than people previously imagined. They look after other dolphins when they are ill, care for pregnant mothers and protect the weakest in the community, as we do. Some scientists have suggested that dolphins have a language but it is much more probable that they communicate with each other without needing words. Could any of these mammals be more intelligent than man? Certainly the most common argument in favor of man's superiority over them that we can kill them more easily than they can kill us is the least satisfactory. On the contrary, the more we discover about these remarkable creatures, the less we appear superior when we destroy them.",
 		"questions": [
 		{
 			"question_number": "Question 1 of 3",
@@ -41,7 +41,7 @@
 	},
 	{
 		"title": "Opera",
-		"text": "<b>Opera refers to a dramatic art form</b>, originating in <b>Europe</b>, in <span style=\"color:blue\">which the emotional content is conveyed to the audience</span> as much through music, both vocal and instrumental, as it is through the lyrics. By contrast, in musical theater an actor's dramatic performance is primary, and the music plays a lesser role. The <b>drama in opera</b> is presented using the primary <b>elements of theater such as scenery, costumes, and acting</b>. However, the words of the opera, or libretto, are sung rather than spoken. The singers are accompanied by a musical ensemble ranging from a small instrumental ensemble to a full symphonic orchestra.",
+		"text": "<b>Opera refers to a dramatic art form</b>, originating in <span class=\"nonkeywords\"><b>Europe</b>, in which the emotional content is</span> conveyed to the audience</span> as much through music, both vocal and instrumental, as it is through the lyrics. By contrast, in musical theater an actor's dramatic performance is primary, and the music plays a lesser role. The <b>drama in opera</b> is presented using the primary <b>elements of theater such as scenery, costumes, and acting</b>. However, the words of the opera, or libretto, are sung rather than spoken. The singers are accompanied by a musical ensemble ranging from a small instrumental ensemble to a full symphonic orchestra.",
 		"questions": [
 		{
 			"question_number": "Question 1 of 3",
@@ -77,7 +77,7 @@
 	},
 	{
 		"title": "Unsinkable Ship",
-		"text": "Naval architects never claim that a ship is unsinkable, but the sinking of the passenger-and-car ferry Estonia in the Baltic surely should have never have happened. It was well designed and carefully maintained. It carried the proper number of lifeboats. It had been thoroughly inspected the day of its fatal voyage. Yet hours later, <b>the Estonia rolled over and sank in a cold, stormy night</b>. It went down so quickly that most of those on board, caught in their dark, flooding cabins, had no chance to save themselves: Of those who managed to scramble overboard, only 139 survived. The rest died of hypothermia before the rescuers could pluck them from the cold sea. <b>The final death toll amounted to 912 souls</b>. However, there were an unpleasant number of questions about why the Estonia sank and why so <b>many survivors were men in the prime of life</b>, while most of the dead were women, children and the elderly.",
+		"text": "Naval architects <span class=\"nonkeywords\">never claim that a ship is</span> unsinkable, but the sinking of the passenger-and-car ferry Estonia in the Baltic surely should have never have happened. It was well designed and carefully maintained. It carried the proper number of lifeboats. It had been thoroughly inspected the day of its fatal voyage. Yet hours later, <b>the Estonia rolled over and sank in a cold, stormy night</b>. It went down so quickly that most of those on board, caught in their dark, flooding cabins, had no chance to save themselves: Of those who managed to scramble overboard, only 139 survived. The rest died of hypothermia before the rescuers could pluck them from the cold sea. <b>The final death toll amounted to 912 souls</b>. However, there were an unpleasant number of questions about why the Estonia sank and why so <b>many survivors were men in the prime of life</b>, while most of the dead were women, children and the elderly.",
 		"questions": [
 		{
 			"question_number": "Question 1 of 3",
@@ -113,7 +113,7 @@
 	},
 	{
 		"title": "Erosion in America",
-		"text": "Erosion of America's farmland <b>by wind and water has been a problem</b> since settlers first put the prairies and grasslands under the plow in the nineteenth century. By the 1930s, more than <b>282 million acres of farmland were damaged by erosion</b>. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by <b>heavy crop production</b>. In the years ahead, soil erosion and the pollution problems it causes are likely to <b>replace petroleum scarcity as the nation's most critical natural resource problem.</b>",
+		"text": "Erosion of America's farmland <b>by wind and water has been a problem</b> since <span class=\"nonkeywords\">settlers first put the prairies</span> and grasslands under the plow in the nineteenth century. By the 1930s, more than <b>282 million acres of farmland were damaged by erosion</b>. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by <b>heavy crop production</b>. In the years ahead, soil erosion and the pollution problems it causes are likely to <b>replace petroleum scarcity as the nation's most critical natural resource problem.</b>",
 		"questions": [
 		{
 			"question_number": "Question 1 of 3",
