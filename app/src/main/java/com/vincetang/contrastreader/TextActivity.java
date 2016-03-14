@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TextActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -66,7 +68,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         // Get any information passed in
         Bundle extras = getIntent().getExtras();
 
-        // This is used when the 2nd passage is loaded
+        // This is used when the 2nd or later passage is loaded
         if (extras != null) {
             title = extras.getString("title");
             userScore = extras.getInt("userScore");
@@ -78,10 +80,27 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
             rawJSON = readJSONFile();
             Passage passage = parseJSON(title);
             if (passage != null) {
-                if (contrastOn) {
-                    txtData.setText(Html.fromHtml(passage.text));
-                } else {
-                    txtData.setText(Html.fromHtml(passage.text).toString());
+                switch (level) {
+                    case 1: // Level 1: Normal Text
+                        txtData.setText(Html.fromHtml(passage.text));
+                        break;
+                    case 2: // Level 2: Bold Keywords + Normal Text
+                        txtData.setText(Html.fromHtml(passage.text).toString());
+                        break;
+                    case 3: // Level 3: Bold Keywords Only
+                        // Match all spans with class "keyword" and insert display:non
+                        Pattern p = Pattern.compile("(<span\\s+.*?class=\"keywords\".*?)(>)");
+                        Matcher m = p.matcher(passage.text);
+
+                        if (m.find()) {
+                            String result = m.replaceAll(m.group(1) + " display:none" + ">");
+                            txtData.setText(Html.fromHtml(result));
+                        } else {
+                            // no keywords?
+                            txtData.setText(Html.fromHtml(passage.text));
+                        }
+                        break;
+
                 }
             }
 
@@ -92,9 +111,13 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
         String message;
         // Message for dialog box to start timer and let user begin
         if (level == 2) {
-            message = "You have completed the first passage! This is the last exercise.\n\n" +
+            message = "You have completed the first passage! This is the second exercise.\n\n" +
                     "Press Start when you're ready to begin reading.\n\n" +
                     "Press Done at the bottom of the screen when you have finished reading.";
+        } else if (level == 3) {
+            message = "You have completed the second passage! This is the last exercise.\n\n" +
+                    "Press Start when you're ready to begin reading.\n\n" +
+                    "Press Done at the bottom of the screen when you have finished reading.\n\n";
         } else {
             message = "Welcome to the reading exercise!\n" +
                     "This is the first of two passages.\n\n" +
