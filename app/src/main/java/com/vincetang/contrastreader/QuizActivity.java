@@ -121,12 +121,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             strMode = "Contrast Off";
         }*/
 
-        if (level == 1) {
+        if (level == 1 || level == 3) {
             strMode = "Normal Text";
-        } else if (level == 2) {
-            strMode = "Bold Keywords + Normal Text";
         } else {
-            strMode = "Keywords Only";
+            strMode = "Bold Keywords + Normal Text";
         }
 
         double timeSeconds = time/1000.00;
@@ -142,7 +140,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         writeData.execute(result);
 //        Log.d("WRITEFILE", "File written to: " + getFilesDir().toString());
 
-        if (level < 3) {
+        if (level < 4) {
             level++;
 
             switch (title.toLowerCase()) {
@@ -152,9 +150,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     nextTitle = "coming of age in samoa";
                     break;
                 case "coming of age in samoa":
-                    nextTitle = "florence nightingale";
+                    nextTitle = "the design competition that opened toronto to the world";
                     break;
-                case "florence nightingale":
+                case "the design competition that opened toronto to the world":
+                    nextTitle = "the famous canadian winnipeg cake";
+                    break;
+                case "the famous canadian winnipeg cake":
                     nextTitle = "the social function of science";
                     break;
 

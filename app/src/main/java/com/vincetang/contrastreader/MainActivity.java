@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setTitle("Hello!")
                 .setCancelable(false)
                 .setMessage("Welcome to the reading experiment. Here you will explore a variety" +
-                        " of reading formats. You will be asked to read 3 passages in total. " +
+                        " of reading formats. You will be asked to read 4 passages in total. " +
                         "After each passage there will be a quiz consisting of 5 questions." +
                         "\n\nThank you for participating and enjoy the experiment!")
                 .setPositiveButton("Begin", new DialogInterface.OnClickListener() {
@@ -159,9 +159,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnText3:
                 loadTextActivity((String) btnText3.getText());
                 break;
-//            case R.id.btnText4:
-//                loadTextActivity((String) btnText4.getText());
-//                break;
+            case R.id.btnText4:
+                loadTextActivity((String) btnText4.getText());
+                break;
             default:
                 break;
         }
